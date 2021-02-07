@@ -255,6 +255,12 @@ window.addEventListener("message", function (e) {
 							setFileSize(video_360p_mp4_url, "360p_down_size");
 							document.getElementById("240p_down_url").href = video_240p_mp4_url;
 							setFileSize(video_240p_mp4_url, "240p_down_size");
+							let n = video_config_media.season_title.replace(' ', '_') + '_' + video_config_media.display_episode_number.replace(' ', '_') + '_';
+							document.getElementById('1080p_down_url').setAttribute('download', toString(n) + '1080p.mp4')
+							document.getElementById('720p_down_url').setAttribute('download', toString(n)+ '720p.mp4')
+							document.getElementById('480p_down_url').setAttribute('download', toString(n) + '480p.mp4')
+							document.getElementById('360p_down_url').setAttribute('download', toString(n) + '360p.mp4')
+							document.getElementById('240p_down_url').setAttribute('download', toString(n) + '240p.mp4')
 							
 							//console.log("1080p_mp4: " + video_1080p_mp4_url);
 							//console.log("720p_mp4: " + video_720p_mp4_url);
@@ -361,23 +367,58 @@ window.addEventListener("message", function (e) {
 							//console.log("240p_mp4: " + video_240p_mp4_url);
 						}
 					});
+
+
+					function saveAs(uri, filename) {
+						var link = document.createElement('a');
+						if (typeof link.download === 'string') {
+							document.body.appendChild(link); // Firefox requires the link to be in the body
+							link.download = filename;
+							link.href = uri;
+							link.click();
+							document.body.removeChild(link); // remove the link when done
+						} else {
+							location.replace(uri);
+						}
+					}
+
+
 					
 					//Aqui oque vai fazer depois de pegar os links mp4
+					let n = video_config_media.season_title.replace(' ', '_') + '_' + video_config_media.display_episode_number.replace(' ', '_') + '_';
+					console.log('n:', n)
 					document.getElementById('1080p_down_url').setAttribute('href', video_1080p_mp4_url)
-					document.getElementById('720p_down_url').setAttribute('href', video_720p_mp4_url)
-					document.getElementById('480p_down_url').setAttribute('href', video_480p_mp4_url)
-					document.getElementById('360p_down_url').setAttribute('href', video_360p_mp4_url)
-					document.getElementById('240p_down_url').setAttribute('href', video_240p_mp4_url)
+					document.getElementById('1080p_down_url').setAttribute('download', n + '1080p.mp4')
 
-					let n = video_config_media.season_title.replace(' ', '_') + '_' + video_config_media.display_episode_number.replace(' ', '_') + '_'
+					document.getElementById('720p_down_url').setAttribute('href', video_720p_mp4_url)
+					document.getElementById('720p_down_url').setAttribute('download', n + '720p.mp4')
+
+					document.getElementById('480p_down_url').setAttribute('href', video_480p_mp4_url)
+					document.getElementById('480p_down_url').setAttribute('download', n + '480p.mp4')
+
+					document.getElementById('360p_down_url').setAttribute('href', video_360p_mp4_url)
+					document.getElementById('360p_down_url').setAttribute('download', n + '360p.mp4')
+
+					document.getElementById('240p_down_url').setAttribute('href', video_240p_mp4_url)
+					document.getElementById('240p_down_url').setAttribute('download', n + '240p.mp4')
+
+				
+
+					// document.getElementById('1080p_down_url').setAttribute('download', n + '1080p.mp4')
+					// document.getElementById('720p_down_url').setAttribute('download', n + '720p.mp4')
+					// document.getElementById('480p_down_url').setAttribute('download', n + '480p.mp4')
+					// document.getElementById('360p_down_url').setAttribute('download', n + '360p.mp4')
+					// document.getElementById('240p_down_url').setAttribute('download', n + '240p.mp4')
 					
+				}
+					let n = video_config_media.season_title.replace(' ', '_') + '_' + video_config_media.display_episode_number.replace(' ', '_') + '_';
+					console.log(n + '1080p.mp4')
 					document.getElementById('1080p_down_url').setAttribute('download', n + '1080p.mp4')
 					document.getElementById('720p_down_url').setAttribute('download', n + '720p.mp4')
 					document.getElementById('480p_down_url').setAttribute('download', n + '480p.mp4')
 					document.getElementById('360p_down_url').setAttribute('download', n + '360p.mp4')
 					document.getElementById('240p_down_url').setAttribute('download', n + '240p.mp4')
-					
-				}
+
 			}
 			
 			playerInstance.addButton(button_iconPath, button_tooltipText, download_ButtonClickAction, buttonId);
