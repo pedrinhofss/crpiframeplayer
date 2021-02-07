@@ -1,6 +1,6 @@
 window.addEventListener("message", function (e) {
 
-	//console.log(e);
+	console.log('e:', e);
 	//console.log(e.currentTarget.document.referrer);
 
 	var video_config_media = JSON.parse(e.data.video_config_media);
@@ -24,7 +24,7 @@ window.addEventListener("message", function (e) {
 	} else {
 		var series_rss = "https://www.crunchyroll.com/" + series_url.split("/")[4] + ".rss";
 	}
-	//console.log(video_config_media);
+	console.log('video_config_media:', video_config_media);
 
 	for (var i = 0; i < video_config_media['streams'].length; i++) {
 		if (video_config_media['streams'][i].format == 'trailer_hls' && video_config_media['streams'][i].hardsub_lang == user_lang) {
@@ -363,7 +363,11 @@ window.addEventListener("message", function (e) {
 					});
 					
 					//Aqui oque vai fazer depois de pegar os links mp4
-					
+					document.getElementById('1080p_down_url').setAttribute('href', video_1080p_mp4_url)
+					document.getElementById('720p_down_url').setAttribute('href', video_720p_mp4_url)
+					document.getElementById('480p_down_url').setAttribute('href', video_480p_mp4_url)
+					document.getElementById('360p_down_url').setAttribute('href', video_360p_mp4_url)
+					document.getElementById('240p_down_url').setAttribute('href', video_240p_mp4_url)
 				}
 			}
 			
@@ -379,6 +383,7 @@ window.addEventListener("message", function (e) {
 			});
 			//Mostra uma tela de erro caso a legenda pedida não exista.
 			jwplayer().on('error', function (e) {
+				console.log('e:', e)
 				if (e.code == 232011) {
 					jwplayer().load({
 						file: "https://i.imgur.com/OufoM33.mp4"
