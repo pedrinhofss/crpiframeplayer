@@ -135,7 +135,7 @@ window.addEventListener("message", function (e) {
 			var button_tooltipText = "Baixar Vídeo";
 			var buttonId = "download-video-button";
 			
-			//function que pega algo dentro dentro do html.
+			//function que pega algo dentro do html.
 			function pegaString(str, first_character, last_character) {
 				if(str.match(first_character + "(.*)" + last_character) == null){
 					return null;
@@ -368,6 +368,15 @@ window.addEventListener("message", function (e) {
 					document.getElementById('480p_down_url').setAttribute('href', video_480p_mp4_url)
 					document.getElementById('360p_down_url').setAttribute('href', video_360p_mp4_url)
 					document.getElementById('240p_down_url').setAttribute('href', video_240p_mp4_url)
+
+					let n = video_config_media.season_title.replace(' ', '_') + '_' + video_config_media.display_episode_number.replace(' ', '_') + '_'
+					
+					document.getElementById('1080p_down_url').setAttribute('download', n + '1080p.mp4')
+					document.getElementById('720p_down_url').setAttribute('download', n + '720p.mp4')
+					document.getElementById('480p_down_url').setAttribute('download', n + '480p.mp4')
+					document.getElementById('360p_down_url').setAttribute('download', n + '360p.mp4')
+					document.getElementById('240p_down_url').setAttribute('download', n + '240p.mp4')
+					
 				}
 			}
 			
