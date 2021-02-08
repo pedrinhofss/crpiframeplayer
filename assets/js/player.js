@@ -256,6 +256,7 @@ window.addEventListener("message", function (e) {
 							document.getElementById("240p_down_url").href = video_240p_mp4_url;
 							setFileSize(video_240p_mp4_url, "240p_down_size");
 							let n = video_config_media.season_title.replace(' ', '_') + '_' + video_config_media.display_episode_number.replace(' ', '_') + '_';
+							console.log('------------------------------------------------------------------------------', n)
 							document.getElementById('1080p_down_url').setAttribute('download', toString(n) + '1080p.mp4')
 							document.getElementById('720p_down_url').setAttribute('download', toString(n)+ '720p.mp4')
 							document.getElementById('480p_down_url').setAttribute('download', toString(n) + '480p.mp4')
@@ -411,13 +412,6 @@ window.addEventListener("message", function (e) {
 					// document.getElementById('240p_down_url').setAttribute('download', n + '240p.mp4')
 					
 				}
-					let n = video_config_media.season_title.replace(' ', '_') + '_' + video_config_media.display_episode_number.replace(' ', '_') + '_';
-					console.log(n + '1080p.mp4')
-					document.getElementById('1080p_down_url').setAttribute('download', n + '1080p.mp4')
-					document.getElementById('720p_down_url').setAttribute('download', n + '720p.mp4')
-					document.getElementById('480p_down_url').setAttribute('download', n + '480p.mp4')
-					document.getElementById('360p_down_url').setAttribute('download', n + '360p.mp4')
-					document.getElementById('240p_down_url').setAttribute('download', n + '240p.mp4')
 
 			}
 			
